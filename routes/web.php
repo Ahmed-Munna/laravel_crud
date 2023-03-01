@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\customUserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/auth', function () {
-    return view('auth');
-});
+Route::get('/', [customUserController::class, 'signup']);
+Route::get('/signin', [customUserController::class, 'signin']);
+
+// Registration
+
+Route::post('/signup', [customUserController::class, 'store'])->name('signup');
